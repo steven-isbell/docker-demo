@@ -1,14 +1,20 @@
 const express = require('express');
 const { json } = require('body-parser');
+const path = require('path');
 
 const port = 3001;
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.status(200).json('Hello Docker');
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(`${__dirname}/../build`));
 
-app.listen(port, () => {
-  console.log(`Listening on port: ${port}`);
-});
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+  });
+  app.listen(port);
+} else {
+  app.listen(port, () => {
+    console.log(`Listening on port: ${port}`);
+  });
+}

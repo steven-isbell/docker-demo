@@ -4,9 +4,9 @@ WORKDIR /var/server
 
 COPY . /var/server
 
-RUN npm install
+RUN yarn
 
-RUN npm build
+RUN yarn build
 
 EXPOSE 3001
 

@@ -11,8 +11,8 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start-dev": "concurrently --kill-others \"react-scripts start\"  \"nodemon server/index.js\"",
-    "start-prod": "node server/index.js",
+    "start-dev": "NODE_ENV=development concurrently --kill-others \"react-scripts start\"  \"nodemon server/index.js\"",
+    "start-prod": "NODE_ENV=production node server/",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

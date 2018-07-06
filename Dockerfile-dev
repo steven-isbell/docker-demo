@@ -4,9 +4,9 @@ WORKDIR /var/server
 
 COPY . /var/server
 
-RUN npm install -g nodemon
+RUN yarn global add nodemon
 
-RUN npm install
+RUN yarn
 
 EXPOSE 3001
 
